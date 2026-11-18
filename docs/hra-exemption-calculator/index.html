@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HRA Exemption Calculator India – Old Tax Regime</title>
+<meta name="description" content="Free HRA exemption calculator for salaried people in India. Applies the least-of-three rule (actual HRA, rent minus 10% of salary, 50%/40% of salary). Runs in your browser.">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<main>
+<p><a href="../">&larr; All tools</a></p>
+<h1>HRA Exemption Calculator</h1>
+<p class="mut">Works out the tax-exempt part of your HRA under the old tax regime. All maths runs in your browser.</p>
+<form id="f" class="card">
+  <div class="row">
+    <div><label for="basic">Basic salary + DA per year (₹)</label><input id="basic" type="number" min="0" value="600000" inputmode="numeric"></div>
+    <div><label for="hra">HRA received per year (₹)</label><input id="hra" type="number" min="0" value="240000" inputmode="numeric"></div>
+    <div><label for="rent">Rent paid per year (₹)</label><input id="rent" type="number" min="0" value="240000" inputmode="numeric"></div>
+    <div><label for="city">City</label><select id="city"><option value="0.5">Delhi, Mumbai, Kolkata, Chennai (50%)</option><option value="0.4">Other cities (40%)</option></select></div>
+  </div>
+  <p><button type="submit" data-track="hra-calc">Calculate</button></p>
+</form>
+<div id="out" class="card" aria-live="polite"></div>
+<p class="card">Use this number in the <a href="../salary-calculator-india/" data-track="hra-to-salary">salary calculator</a> (old regime HRA field) to compare regimes.</p>
+<div id="offers" class="card" hidden></div>
+<section class="card">
+<h2>FAQ</h2>
+<details><summary><b>How is HRA exemption calculated?</b></summary><p>It is the <b>least</b> of: (1) actual HRA received, (2) rent paid minus 10% of basic salary (+DA), (3) 50% of basic for Delhi, Mumbai, Kolkata and Chennai, or 40% elsewhere. The rest of the HRA is taxable.</p></details>
+<details><summary><b>Does HRA exemption apply in the new regime?</b></summary><p>No. It is available only under the old tax regime.</p></details>
+<details><summary><b>Is rent paid to parents allowed?</b></summary><p>Generally yes if it is real rent, with a rent agreement and payment proof, and the parent declares it as income. Check the rules or ask a tax professional. This is an estimate, not tax advice.</p></details>
+<details><summary><b>Do I need a landlord PAN?</b></summary><p>Employers usually ask for the landlord's PAN when annual rent is above ₹1 lakh.</p></details>
+</section>
+</main>
+<script src="../assets/config.js"></script>
+<script src="../assets/mb.js"></script>
+<script>
+var inr = function (n) { return "₹" + Math.round(n).toLocaleString("en-IN"); };
+var v = function (id) { return Math.max(0, parseFloat(document.getElementById(id).value) || 0); };
+function hraExempt(basic, hra, rent, pct) {
+  return Math.max(0, Math.min(hra, rent - 0.1 * basic, pct * basic));
+}
+function run(e) {
+  if (e) e.preventDefault();
+  var b = v("basic"), h = v("hra"), r = v("rent"), p = parseFloat(document.getElementById("city").value);
+  var x = hraExempt(b, h, r, p);
+  document.getElementById("out").innerHTML = "<span class='mut'>Exempt HRA per year</span><div class='big'>" + inr(x) + "</div>" +
+    "<table><tr><td>Actual HRA</td><td>" + inr(h) + "</td></tr><tr><td>Rent − 10% of basic</td><td>" + inr(Math.max(0, r - 0.1 * b)) +
+    "</td></tr><tr><td>" + (p * 100) + "% of basic</td><td>" + inr(p * b) + "</td></tr></table>" +
+    "<p>Taxable HRA: " + inr(h - x) + "</p>";
+}
+document.getElementById("f").addEventListener("submit", run);
+run();
+MB.renderOffers("hra-exemption-calculator", document.getElementById("offers"));
+function selfTest() { // 6L basic, 2.4L HRA, 2.4L rent, metro -> min(240k, 180k, 300k)=180k
+  console.assert(hraExempt(600000, 240000, 240000, 0.5) === 180000, "HRA least-of-three");
+  console.assert(hraExempt(600000, 240000, 40000, 0.5) === 0, "low rent -> 0");
+  return "ok";
+}
+</script>
+</body>
+</html>

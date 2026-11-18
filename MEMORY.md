@@ -1,10 +1,10 @@
 ## NEXT_BATON
-UPDATED_AT: 2026-11-18T11:25:00Z
+UPDATED_AT: 2026-11-18T12:00:00Z
 LAST_COMMIT: see `git log -1`
-LAST_COMPLETED: Pages verified live (200); salary FAQ added; distribution drafts written
-NEXT_ACTION: If owner supplied GoatCounter code / affiliate links, put them in docs/assets/config.js, push, re-run watchdog. Else build next asset: programmatic long-tail pages only if non-thin (e.g. regime comparison for specific salary bands with unique computed tables)
-TARGET_FILE: docs/assets/config.js
-BLOCKER: GoatCounter code + affiliate links need owner-account signup (OWNER_ACTION.md)
+LAST_COMPLETED: GoatCounter wired (code "money"); added hra-exemption-calculator (3 bets now: max reached)
+NEXT_ACTION: Verify hra URL 200 via watchdog run (STATUS.txt); add 2-3 distribution drafts for HRA queries in projects/distribution/posts.md; do not add a 4th bet until a bet shows traffic data
+TARGET_FILE: projects/distribution/posts.md
+BLOCKER: Cuelinks/Zoho affiliate links from owner; owner posts the drafts; no scheduled runs (owner declined)
 
 ## Market insights
 - [ESTIMATED] India tax-regime/in-hand-salary queries spike Jan–Mar (budget/declaration season) and Apr (new FY). Big competitors exist; win on long-tail + speed + privacy.

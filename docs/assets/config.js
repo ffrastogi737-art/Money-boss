@@ -3,6 +3,7 @@ window.MB_CONFIG = {
   goatcounter: "money", // GoatCounter site code, e.g. "mysite" (public). Owner fills in.
   offers: {
     "salary-calculator-india": [], // [{label:"...", url:"https://affiliate-link", note:"..."}]
-    "gst-invoice-generator": []
+    "gst-invoice-generator": [],
+    "hra-exemption-calculator": []
   }
 };
