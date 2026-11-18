@@ -1,10 +1,11 @@
 ## NEXT_BATON
-UPDATED_AT: 2026-11-18T12:28:54Z
+UPDATED_AT: 2026-11-18T12:42:11Z
 LAST_COMMIT: see `git log -1`
-LAST_COMPLETED: Added 3 HRA distribution drafts (posts.md #4-6); triggered watchdog to verify HRA URL
-NEXT_ACTION: Read STATUS.txt after the watchdog run; confirm HRA 200; then wait for owner links (Cuelinks/Zoho) and add them to docs/assets/config.js; no 4th bet until traffic data
-TARGET_FILE: STATUS.txt
-BLOCKER: Cuelinks/Zoho affiliate links from owner; owner posts the drafts; no scheduled runs (owner declined)
+LAST_COMPLETED: Built Site Estimation Toolkit (projects/site-toolkit/build_*.py; xlsx verified 0 formula errors via LibreOffice) and attached it + cover to Superprofile draft 6af606ce449fa300078a3bae; publish blocked: PLAN_REQUIRED
+NEXT_ACTION: Check OWNER_ACTION #5. If plan upgraded: publish_product (get_product for version first), add distribution drafts for civil-engineer audiences (Reddit r/civilengineering-type, LinkedIn, YouTube comments on owner channels only), watch get_sales_summary. If not: try free route (Superprofile lead magnet = free sample sheet to collect emails), or another storefront needing owner login; run STATUS check on HRA URL
+TARGET_FILE: OWNER_ACTION.md
+BLOCKER: Superprofile paid plan needed to publish the paid toolkit; affiliate links pending
+Rebuild files: python3 projects/site-toolkit/build_xlsx.py OUT.xlsx; python3 projects/site-toolkit/build_pdf_cover.py OUT_DIR (then LibreOffice recalc: soffice --headless --convert-to xlsx)
 
 ## Idea queue (not built; max 3 bets): shorts-earnings calculator (YouTube Shorts income + Partner Program distance; RPM $0.01-0.07 typical, sources disagree [RESEARCHED weak]; distribution = owner's own channels). Build only if a bet is archived.
 
