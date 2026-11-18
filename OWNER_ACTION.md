@@ -6,4 +6,4 @@ Done: Pages enabled, workflow write permissions.
 - [ ] 3. Post the drafts in `projects/distribution/posts.md` from your own accounts (Reddit/Quora/LinkedIn). Without visitors there is no revenue.
 - [ ] 4. Zoho affiliate: wait for approval mail (7-10 business days from 2026-11-18); then paste your tracking link in chat. Cuelinks: confirm the account is approved, then paste a Upstox/broker tracking link.
 - [ ] 5. Superprofile draft "Site Estimation Toolkit": say "build the toolkit" and Claude will create the .xlsx; you upload it + a cover in Superprofile (or tell me to proceed). Not publishable without them.
-- [ ] 6. If you own a YouTube channel / extra repo ("faceless" repo), tell me its name or add it with add_repo so I can check it.
+- [x] 6. Owner decided: the faceless/YouTube repo stays completely separate from money-boss; do not touch it.

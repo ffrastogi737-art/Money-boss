@@ -1,10 +1,12 @@
 ## NEXT_BATON
-UPDATED_AT: 2026-11-18T12:00:00Z
+UPDATED_AT: 2026-11-18T12:28:54Z
 LAST_COMMIT: see `git log -1`
-LAST_COMPLETED: GoatCounter wired (code "money"); added hra-exemption-calculator (3 bets now: max reached)
-NEXT_ACTION: Verify hra URL 200 via watchdog run (STATUS.txt); add 2-3 distribution drafts for HRA queries in projects/distribution/posts.md; do not add a 4th bet until a bet shows traffic data
-TARGET_FILE: projects/distribution/posts.md
+LAST_COMPLETED: Added 3 HRA distribution drafts (posts.md #4-6); triggered watchdog to verify HRA URL
+NEXT_ACTION: Read STATUS.txt after the watchdog run; confirm HRA 200; then wait for owner links (Cuelinks/Zoho) and add them to docs/assets/config.js; no 4th bet until traffic data
+TARGET_FILE: STATUS.txt
 BLOCKER: Cuelinks/Zoho affiliate links from owner; owner posts the drafts; no scheduled runs (owner declined)
+
+## Idea queue (not built; max 3 bets): shorts-earnings calculator (YouTube Shorts income + Partner Program distance; RPM $0.01-0.07 typical, sources disagree [RESEARCHED weak]; distribution = owner's own channels). Build only if a bet is archived.
 
 ## Capability inventory (2026-11-18, [VERIFIED] by tool calls; no personal data here, repo is public)
 - Sandbox cannot reach github.io (use watchdog run for live checks). GitHub write access limited to this repo this session; other owner repos need add_repo.

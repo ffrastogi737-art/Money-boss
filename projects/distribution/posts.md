@@ -16,3 +16,11 @@ Reply to anyone asking "which invoice tool?" with this; don't spam threads.
 
 ## Seasonality
 Tax-regime questions peak Jan–Mar and April. Post answers continuously; expect low volume until then. Track real visits in GoatCounter before judging.
+
+## HRA tool (old regime): https://ffrastogi737-art.github.io/Money-boss/hra-exemption-calculator/
+### 4. Reddit/Quora: "How much HRA is exempt / how is HRA calculated?"
+HRA exemption (old regime) is the least of three: (1) HRA you actually receive, (2) rent paid minus 10% of basic (+DA), (3) 50% of basic if you live in Delhi/Mumbai/Kolkata/Chennai, else 40%. The smallest number is tax-free; the rest is taxed. Example: basic 6L, HRA 2.4L, rent 2.4L in a metro: min(2.4L, 1.8L, 3L) = 1.8L exempt. I built a free browser-only calculator for this (disclosure: I'm the author): <HRA tool link>. It only applies to the old regime.
+### 5. Reddit: "Can I claim HRA if I pay rent to my parents?"
+Generally yes if the rent is real: rent agreement, bank transfers, parents declare it as income, and the landlord PAN is usually asked above ₹1 lakh rent a year. Check with your employer or a tax professional for your case. To see how much exemption you'd get, I made a free calculator (I built it): <HRA tool link>.
+### 6. LinkedIn/X: HRA season post (Dec-Jan, investment declarations)
+Submitting rent proofs to HR? Check your HRA exemption first: least of actual HRA, rent minus 10% of basic, 50%/40% of basic. Free, runs in your browser, nothing uploaded: <HRA tool link>
