@@ -1,10 +1,10 @@
 ## NEXT_BATON
-UPDATED_AT: 2026-11-18T11:09:00Z
-LAST_COMMIT: see `git log -1` (set at commit)
-LAST_COMPLETED: Cycle 1 — infra + salary calculator (primary) + GST invoice generator (secondary)
-NEXT_ACTION: Check STATUS.txt; if URLs are 200, write 3 distribution posts (genuinely helpful answers) as files in projects/distribution/ for owner to post; add FAQ/SEO content to salary page
-TARGET_FILE: docs/salary-calculator-india/index.html
-BLOCKER: Owner must enable Pages (main:/docs), merge branch to main, set GoatCounter code + affiliate links in docs/assets/config.js (see OWNER_ACTION.md)
+UPDATED_AT: 2026-11-18T11:25:00Z
+LAST_COMMIT: see `git log -1`
+LAST_COMPLETED: Pages verified live (200); salary FAQ added; distribution drafts written
+NEXT_ACTION: If owner supplied GoatCounter code / affiliate links, put them in docs/assets/config.js, push, re-run watchdog. Else build next asset: programmatic long-tail pages only if non-thin (e.g. regime comparison for specific salary bands with unique computed tables)
+TARGET_FILE: docs/assets/config.js
+BLOCKER: GoatCounter code + affiliate links need owner-account signup (OWNER_ACTION.md)
 
 ## Market insights
 - [ESTIMATED] India tax-regime/in-hand-salary queries spike Jan–Mar (budget/declaration season) and Apr (new FY). Big competitors exist; win on long-tail + speed + privacy.

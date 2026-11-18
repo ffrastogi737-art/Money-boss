@@ -19,9 +19,9 @@ PROSPECTS -> QUALIFIED_LEADS -> VERIFIED_SALE -> PAYOUT_PENDING -> VERIFIED_PAYO
 
 ## Live URLs
 (audit.py reads lines of the form `- URL: <url> | <status>`)
-- URL: https://ffrastogi737-art.github.io/Money-boss/ | [EXECUTED - PAGES_BUILDING] hub
-- URL: https://ffrastogi737-art.github.io/Money-boss/salary-calculator-india/ | [EXECUTED - PAGES_BUILDING]
-- URL: https://ffrastogi737-art.github.io/Money-boss/gst-invoice-generator/ | [EXECUTED - PAGES_BUILDING]
+- URL: https://ffrastogi737-art.github.io/Money-boss/ | [VERIFIED live 2026-11-18T11:18:28Z, HTTP 200 via watchdog] hub
+- URL: https://ffrastogi737-art.github.io/Money-boss/salary-calculator-india/ | [VERIFIED live 2026-11-18T11:18:28Z, HTTP 200 via watchdog]
+- URL: https://ffrastogi737-art.github.io/Money-boss/gst-invoice-generator/ | [VERIFIED live 2026-11-18T11:18:28Z, HTTP 200 via watchdog]
 
 ## Bet scoring (0-5; [ESTIMATED], web research not yet run — demand is a prior, validate with real analytics)
 | Candidate | Demand | Monetize | Distribution | Build speed | Total |
@@ -32,6 +32,8 @@ PROSPECTS -> QUALIFIED_LEADS -> VERIFIED_SALE -> PAYOUT_PENDING -> VERIFIED_PAYO
 
 ## Log
 - 2026-11-18T11:09:00Z [EXECUTED] Cycle 1: infra built, 2 MVPs written (not yet confirmed live).
+
+- 2026-11-18T11:25:00Z [EXECUTED] Pages live (watchdog 200s). Salary FAQ + distribution drafts (projects/distribution/posts.md) pushed. Affiliate/GoatCounter blocked on owner accounts.
 
 ## VERIFIED_PAYOUT:
 (none)
