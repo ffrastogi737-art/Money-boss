@@ -1,11 +1,12 @@
-STATUS generated 2026-11-18T11:18:28Z
+STATUS generated 2026-11-18T12:29:05Z
 Day 0 since start
 Checkpoint 72h: in 2d
 Checkpoint 14d: in 13d
 Checkpoint 30d: in 29d
 Ledger (self-reported, owner-verify): gross=0.0 net=0.0 verified_payout=0.0
-Analytics: TRACTION_UNKNOWN (config.js goatcounter empty)
+Analytics: WIRED (visit counts live in GoatCounter dashboard; audit cannot read them -> sample unverified)
 URL https://ffrastogi737-art.github.io/Money-boss/ -> 200 [VERIFIED live]
 URL https://ffrastogi737-art.github.io/Money-boss/salary-calculator-india/ -> 200 [VERIFIED live]
 URL https://ffrastogi737-art.github.io/Money-boss/gst-invoice-generator/ -> 200 [VERIFIED live]
-VERDICT: TRACTION_UNKNOWN
+URL https://ffrastogi737-art.github.io/Money-boss/hra-exemption-calculator/ -> 200 [VERIFIED live]
+VERDICT: INSUFFICIENT_SAMPLE
