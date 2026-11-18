@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free GST Invoice Generator for Freelancers (India) – Print to PDF</title>
+<meta name="description" content="Create a GST tax invoice with CGST/SGST or IGST in seconds. Free, no signup, runs in your browser. Print or save as PDF.">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<main>
+<p class="noprint"><a href="../">&larr; All tools</a></p>
+<h1>GST Invoice Generator</h1>
+<p class="mut noprint">Fill in the details, then use Print &rarr; Save as PDF. Nothing is uploaded; data stays in your browser.</p>
+
+<section class="card">
+  <div class="row">
+    <div><label for="sn">Your business name</label><input id="sn" value="Your Business"></div>
+    <div><label for="sg">Your GSTIN</label><input id="sg" maxlength="15" placeholder="22AAAAA0000A1Z5"></div>
+    <div><label for="bn">Client name</label><input id="bn" value="Client Name"></div>
+    <div><label for="bg">Client GSTIN (optional)</label><input id="bg" maxlength="15"></div>
+    <div><label for="no">Invoice no.</label><input id="no" value="INV-001"></div>
+    <div><label for="dt">Date</label><input id="dt" type="date"></div>
+    <div class="noprint"><label for="tp">Supply type</label>
+      <select id="tp"><option value="intra">Same state (CGST + SGST)</option><option value="inter">Other state (IGST)</option></select></div>
+  </div>
+  <table id="items" style="margin-top:12px">
+    <thead><tr><th>Description</th><th>Qty</th><th>Rate ₹</th><th>GST %</th><th class="noprint"></th></tr></thead>
+    <tbody></tbody>
+  </table>
+  <p class="noprint"><button type="button" id="add" data-track="gst-add-item">+ Add item</button>
+  <button type="button" id="print" data-track="gst-print">Print / Save PDF</button></p>
+  <table id="tot"></table>
+  <p class="mut" id="gstnote"></p>
+</section>
+
+<div id="offers" class="card noprint" hidden></div>
+<p class="mut noprint"><small>Generates a basic tax invoice layout. Not tax or legal advice; confirm mandatory fields (HSN/SAC, place of supply, etc.) for your business with a professional.</small></p>
+</main>
+<script src="../assets/config.js"></script>
+<script src="../assets/mb.js"></script>
+<script>
+var $ = function (i) { return document.getElementById(i); };
+var tb = $("items").tBodies[0];
+var inr = function (n) { return "₹" + n.toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 }); };
+var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); };
+function addRow(d) {
+  var r = tb.insertRow();
+  r.innerHTML = '<td><input value="' + esc(d[0]) + '"></td><td><input type="number" min="0" value="' + d[1] + '"></td>' +
+    '<td><input type="number" min="0" value="' + d[2] + '"></td><td><input type="number" min="0" max="28" value="' + d[3] + '"></td>' +
+    '<td class="noprint"><button type="button" title="Remove" aria-label="Remove item">&times;</button></td>';
+  r.querySelector("button").onclick = function () { r.remove(); calc(); };
+}
+function calc() {
+  var base = 0, gst = 0;
+  for (var i = 0; i < tb.rows.length; i++) {
+    var v = tb.rows[i].querySelectorAll("input");
+    var amt = (parseFloat(v[1].value) || 0) * (parseFloat(v[2].value) || 0);
+    base += amt; gst += amt * (parseFloat(v[3].value) || 0) / 100;
+  }
+  var inter = $("tp").value === "inter", rows = ["<tr><td>Taxable value</td><td>" + inr(base) + "</td></tr>"];
+  rows.push(inter ? "<tr><td>IGST</td><td>" + inr(gst) + "</td></tr>" :
+    "<tr><td>CGST</td><td>" + inr(gst / 2) + "</td></tr><tr><td>SGST</td><td>" + inr(gst / 2) + "</td></tr>");
+  rows.push('<tr><td><b>Total</b></td><td class="big">' + inr(base + gst) + "</td></tr>");
+  $("tot").innerHTML = rows.join("");
+  var g = $("sg").value.trim().toUpperCase();
+  $("gstnote").textContent = "Seller GSTIN: " + (g || "—") + (g && !/^\d{2}[A-Z]{5}\d{4}[A-Z][1-9A-Z]Z[0-9A-Z]$/.test(g) ? " (format looks invalid)" : "") +
+    " | Buyer: " + $("bn").value + ($("bg").value ? " (" + $("bg").value.toUpperCase() + ")" : "") + " | Invoice " + $("no").value + " dated " + $("dt").value;
+}
+$("dt").value = new Date().toISOString().slice(0, 10);
+addRow(["Service / product", 1, 10000, 18]);
+document.addEventListener("input", calc);
+$("tp").onchange = calc;
+$("add").onclick = function () { addRow(["", 1, 0, 18]); calc(); };
+$("print").onclick = function () { window.print(); };
+calc();
+MB.renderOffers("gst-invoice-generator", $("offers"));
+</script>
+</body>
+</html>

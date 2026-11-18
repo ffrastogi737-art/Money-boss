@@ -1,0 +1,7 @@
+.env
+*.mp4
+*.zip
+*.keystore
+*.jks
+node_modules/
+__pycache__/

@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>In-Hand Salary Calculator India – Old vs New Tax Regime (FY 2025-26)</title>
+<meta name="description" content="Free in-hand salary calculator for India. Compare old vs new tax regime, see monthly take-home and which regime saves more tax. Runs in your browser; nothing is uploaded.">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<main>
+<p><a href="../">&larr; All tools</a></p>
+<h1>In-Hand Salary Calculator (India)</h1>
+<p class="mut">Compare old vs new tax regime for FY 2025-26 (AY 2026-27) and see your monthly take-home. Private: all maths runs in your browser.</p>
+
+<form id="f" class="card">
+  <div class="row">
+    <div><label for="gross">Annual gross salary (₹)</label><input id="gross" type="number" min="0" value="1200000" inputmode="numeric"></div>
+    <div><label for="ded">Old regime: 80C + other deductions (₹)</label><input id="ded" type="number" min="0" value="150000" inputmode="numeric"></div>
+    <div><label for="hra">Old regime: HRA exemption (₹/yr)</label><input id="hra" type="number" min="0" value="0" inputmode="numeric"></div>
+    <div><label for="pf">Employee PF per year (₹)</label><input id="pf" type="number" min="0" value="0" inputmode="numeric"></div>
+  </div>
+  <p><button type="submit" data-track="salary-calc">Calculate</button></p>
+</form>
+
+<div id="out" class="row" aria-live="polite"></div>
+<p id="verdict" class="big"></p>
+
+<div id="offers" class="card" hidden></div>
+
+<section class="card">
+<h2>How this is calculated</h2>
+<ul>
+<li>New regime: standard deduction ₹75,000; slabs 0–4L nil, 4–8L 5%, 8–12L 10%, 12–16L 15%, 16–20L 20%, 20–24L 25%, above 24L 30%; tax is nil up to ₹12L taxable income (with marginal relief just above it).</li>
+<li>Old regime: standard deduction ₹50,000; slabs 0–2.5L nil, 2.5–5L 5%, 5–10L 20%, above 10L 30%; rebate up to ₹12,500 if taxable income ≤ ₹5L.</li>
+<li>4% health &amp; education cess added. Surcharge is <b>not</b> included, so use this for incomes up to ₹50 lakh.</li>
+<li>Estimate only, not tax advice. Check the Income Tax Department's official rules before filing.</li>
+</ul>
+</section>
+</main>
+<script src="../assets/config.js"></script>
+<script src="../assets/mb.js"></script>
+<script>
+var NEW = [[400000,0],[800000,.05],[1200000,.1],[1600000,.15],[2000000,.2],[2400000,.25],[Infinity,.3]];
+var OLD = [[250000,0],[500000,.05],[1000000,.2],[Infinity,.3]];
+function slab(inc, s) {
+  var t = 0, lo = 0;
+  for (var i = 0; i < s.length; i++) {
+    if (inc > lo) t += (Math.min(inc, s[i][0]) - lo) * s[i][1];
+    lo = s[i][0];
+  }
+  return t;
+}
+function newTax(gross) {
+  var ti = Math.max(0, gross - 75000), t = slab(ti, NEW);
+  if (ti <= 1200000) t = 0; else t = Math.min(t, ti - 1200000);
+  return t * 1.04;
+}
+function oldTax(gross, ded, hra) {
+  var ti = Math.max(0, gross - 50000 - ded - hra), t = slab(ti, OLD);
+  if (ti <= 500000) t = Math.max(0, t - 12500);
+  return t * 1.04;
+}
+var inr = function (n) { return "₹" + Math.round(n).toLocaleString("en-IN"); };
+function val(id) { return Math.max(0, parseFloat(document.getElementById(id).value) || 0); }
+function run(e) {
+  if (e) e.preventDefault();
+  var g = val("gross"), pf = val("pf");
+  var tn = newTax(g), to = oldTax(g, val("ded"), val("hra"));
+  var better = tn <= to ? "new" : "old";
+  function box(name, tax, key) {
+    return '<div class="card' + (better === key ? ' win' : '') + '"><b>' + name + '</b><br>Tax/yr: ' + inr(tax) +
+      '<br><span class="mut">In-hand/month</span><div class="big">' + inr((g - tax - pf) / 12) + '</div></div>';
+  }
+  document.getElementById("out").innerHTML = box("New regime", tn, "new") + box("Old regime", to, "old");
+  document.getElementById("verdict").textContent = g
+    ? "You save " + inr(Math.abs(tn - to)) + "/yr with the " + better + " regime." : "";
+}
+document.getElementById("f").addEventListener("submit", run);
+run();
+MB.renderOffers("salary-calculator-india", document.getElementById("offers"));
+// Self-check (run in console: selfTest()): known values
+function selfTest() {
+  console.assert(Math.round(newTax(1275000)) === 0, "12.75L new regime should be nil");
+  console.assert(Math.round(newTax(2000000)) === 192400, "20L new regime = 192400");
+  console.assert(Math.round(oldTax(500000, 0, 0)) === 0, "5L old taxable after std 4.5L = nil");
+  return "ok";
+}
+</script>
+</body>
+</html>
