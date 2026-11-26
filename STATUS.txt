@@ -1,8 +1,8 @@
-STATUS generated 2026-11-25T12:54:18Z
-Day 7 since start
+STATUS generated 2026-11-26T12:33:22Z
+Day 8 since start
 Checkpoint 72h: DUE
-Checkpoint 14d: in 6d
-Checkpoint 30d: in 22d
+Checkpoint 14d: in 5d
+Checkpoint 30d: in 21d
 Ledger (self-reported, owner-verify): gross=0.0 net=0.0 verified_payout=0.0
 Analytics: WIRED (visit counts live in GoatCounter dashboard; audit cannot read them -> sample unverified)
 URL https://ffrastogi737-art.github.io/Money-boss/ -> 200 [VERIFIED live]
